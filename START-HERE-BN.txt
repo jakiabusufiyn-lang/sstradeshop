@@ -1,0 +1,35 @@
+SSTREAND SHOP — আপডেটেড ডেমো
+
+চালানোর নিয়ম:
+1. ZIP Extract করো।
+2. sstreand-shop ফোল্ডারের ভেতরে Command Prompt খোলো।
+3. npm install
+4. npm run dev
+5. Chrome-এ Command Prompt-এর Local URL খোলো (সাধারণত http://localhost:5173)।
+
+Admin demo:
+1. ওয়েবসাইটের নিচে ADMIN DEMO-তে ক্লিক করো।
+2. Demo username হিসেবে যেকোনো লেখা দাও এবং OPEN DEMO PANEL চাপো। এটি নিরাপদ আসল লগইন নয়।
+3. Payment methods অংশে bKash/Nagad/Bank transfer টিক দাও, ব্যবসার পেমেন্ট নম্বর/নির্দেশনা বসাও, তারপর SAVE PAYMENT SETTINGS চাপো।
+4. Checkout-এ enabled পেমেন্ট পদ্ধতি দেখা যাবে।
+
+গুরুত্বপূর্ণ:
+- এটি এখনও ডেমো। সেটিংস ওই ব্রাউজারেই সংরক্ষিত থাকে; ডেটাবেসে নয়।
+- বকেয়া/লাইভ টাকা নেওয়া বা bKash/Nagad transaction যাচাই হয় না। আসল পেমেন্টের জন্য অনুমোদিত merchant API ও নিরাপদ backend লাগবে।
+- Customer login/signup, secure admin authentication, real order database এবং live payment gateway এখনও Supabase/provider credentials দিয়ে সংযুক্ত করতে হবে।
+- npm install চালাতে ইন্টারনেট সংযোগ প্রয়োজন।
+
+
+ADMIN LOGIN (LOCAL DEMO)
+Username: SSTRADEADMIN
+Password: Hi10MaX017
+
+Important: এই login local development-এর জন্য। Public website-এ deploy করার আগে password/credentials পরিবর্তন করতে হবে। Product, order, payment settings এখনো browser-local demo; bKash/Nagad-এর live API এবং Supabase database আলাদাভাবে configure করতে হবে।
+
+HOMEPAGE EDITOR (নতুন)
+1. ওয়েবসাইট চালু করুন: npm install, তারপর npm run dev
+2. ওয়েবসাইটে Admin খুলে লগইন করুন।
+3. Admin Panel-এ নিচে স্ক্রল করে “Homepage editor” খুঁজুন।
+4. Main headline, subtitle, description, hero image URL, floating card, category section ও editorial section সম্পাদনা করুন।
+5. ছবি URL দিয়ে বদলাতে পারেন, অথবা সর্বোচ্চ 1.2 MB-এর ছবি upload করতে পারেন।
+6. “SAVE HOMEPAGE CHANGES” চাপুন। পরিবর্তনগুলো ওই ব্রাউজারের Local Storage-এ থাকবে। অন্য ডিভাইস/ব্রাউজারে সিঙ্ক হবে না; production-এর জন্য Supabase-এ homepage settings table/storage সংযোগ প্রয়োজন।

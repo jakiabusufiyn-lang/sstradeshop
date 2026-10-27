@@ -1,0 +1,45 @@
+SSTREAND SHOP — SQL Database Setup (Bangla)
+==========================================
+
+গুরুত্বপূর্ণ:
+- এই ZIP-এ PostgreSQL/Supabase database-এর SQL schema দেওয়া আছে।
+- আমি তোমার হয়ে অনলাইনে Supabase project তৈরি বা connect করতে পারি না, কারণ সেটার জন্য তোমার নিজের account/project দরকার।
+- SQL চালালেই database tables তৈরি হবে; কিন্তু বর্তমান storefront-এর সব feature এখনো database-এ connected নয়। Product/payment settings এখনও browser localStorage demo-তে থাকে।
+
+A. Supabase-এ database তৈরি করো
+1. Chrome-এ https://supabase.com/ খোলো এবং নিজের account-এ sign in করো.
+2. New project চাপো, project name দাও (যেমন sstreand-shop), strong database password সেট করো, region বেছে Create new project করো.
+3. Project তৈরি হলে বাম পাশের SQL Editor-এ যাও.
+4. New query চাপো.
+5. এই ফোল্ডারের supabase/schema.sql ফাইল Notepad দিয়ে খোলো.
+6. সব SQL text copy করে Supabase SQL Editor-এ paste করো.
+7. Run চাপো এবং সফল হয়েছে কি না দেখো. কোনো error এলে error-এর screenshot রাখো; বারবার blindভাবে চালাবে না.
+
+B. ওয়েবসাইটে Supabase-এর public credentials সেট করো
+1. Supabase Project Settings → API (বা Connect/API Keys) খোলো.
+2. Project URL এবং anon/public key কপি করো. service_role/secret key কখনো frontend-এ দেবে না.
+3. sstreand-shop ফোল্ডারের ভিতরে নতুন ফাইল বানাও: .env.local
+4. নিচের দুই লাইন বসিয়ে YOUR... অংশ নিজের value দিয়ে বদলাও:
+
+VITE_SUPABASE_URL=https://YOUR_PROJECT_REF.supabase.co
+VITE_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
+
+5. ফাইল save করো. VITE_ key browser-এ public হয়, তাই এখানে শুধু anon/public key ব্যবহার করবে.
+6. Command Prompt-এ dev server চালু থাকলে Ctrl+C দিয়ে বন্ধ করো, তারপর npm run dev চালাও.
+
+C. SQL schema কী তৈরি করে?
+- profiles, categories, products, product_media, product_variants
+- addresses, carts, wishlists, coupons
+- orders, order_items, payments, reviews
+- store_settings, homepage_content, admin_audit_log
+- Row Level Security (RLS) policies এবং কিছু initial category/content rows
+
+D. নিরাপত্তা ও সীমাবদ্ধতা
+- SQL schema তৈরি করা মানেই website-এর সব ফিচার database-এ connected হয়ে যাওয়া নয়.
+- বর্তমান UI-তে sample products, cart, wishlist এবং manual payment display settings browser-local demo হিসেবে আছে.
+- Customer sign-in/sign-up Supabase credentials ও Auth configuration পেলে কাজ করতে পারে.
+- Admin bootstrap login এখনও local-development mechanism; production-এ Supabase Auth + server-side admin role setup লাগবে.
+- bKash/Nagad live payment-এর জন্য approved merchant API credentials এবং server-side transaction verification দরকার.
+- Production-এ ব্যবহার করার আগে schema, RLS policies, order transaction/inventory locking এবং admin permissions security review করাতে হবে.
+
+কোনো error হলে error message বা screenshot পাঠাও; database password, service_role key, payment secret বা ব্যক্তিগত credentials পাঠাবে না.
